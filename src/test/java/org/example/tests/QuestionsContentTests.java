@@ -9,10 +9,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-
-import java.util.List;
 
 @RunWith(Parameterized.class)
 public class QuestionsContentTests {
@@ -52,11 +49,10 @@ public class QuestionsContentTests {
 	@Test
 	public void checkQuestionsAndAnswersContent() {
 		HomePageSamokat homePageSamokat = new HomePageSamokat(driver);
-		List<WebElement> questionsList = homePageSamokat.getQuestionsList();
 
-		Assert.assertEquals(questionExpected, questionsList.get(index).getText());
+		Assert.assertEquals(questionExpected, homePageSamokat.getQuestionsList().get(index).getText());
 
-		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", questionsList.get(index));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", homePageSamokat.getQuestionsList().get(index));
 		homePageSamokat.clickQuestionByIndex(index);
 
 		Assert.assertEquals(answerExpected, homePageSamokat.getAnswerTextByIndex(index));
