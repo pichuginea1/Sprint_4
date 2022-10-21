@@ -15,9 +15,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class QuestionsContentTests {
 	private WebDriver driver;
 
+	private final int index;
 	private final String questionExpected;
 	private final String answerExpected;
-	private final int index;
 
 	public QuestionsContentTests(int index, String questionExpected, String answerExpected) {
 		this.index = index;
@@ -41,7 +41,7 @@ public class QuestionsContentTests {
 
 	@Before
 	public void setUp() {
-		//WebDriver driver = new FirefoxDriver();
+		//driver = new FirefoxDriver();
 		driver = new ChromeDriver();
 		driver.get("https://qa-scooter.praktikum-services.ru/");
 	}
